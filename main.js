@@ -9137,7 +9137,7 @@ var _user$project$Main$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							currentInput: _p13,
+							input: _p13,
 							output: A2(_user$project$Main$redact, _p13, model.rng)
 						}),
 					{ctor: '[]'});
@@ -9149,7 +9149,7 @@ var _user$project$Main$update = F2(
 						{
 							output: A2(
 								_user$project$Main$redact,
-								model.currentInput,
+								model.input,
 								_user$project$Main$newRng(model.rng)),
 							rng: _user$project$Main$newRng(model.rng)
 						}),
@@ -9179,16 +9179,15 @@ var _user$project$Main$initSeed = function (c) {
 var _user$project$Main$Config = function (a) {
 	return {seed: a};
 };
-var _user$project$Main$Model = F4(
-	function (a, b, c, d) {
-		return {config: a, currentInput: b, output: c, rng: d};
+var _user$project$Main$Model = F3(
+	function (a, b, c) {
+		return {input: a, output: b, rng: c};
 	});
 var _user$project$Main$init = function (config) {
 	return {
 		ctor: '_Tuple2',
-		_0: A4(
+		_0: A3(
 			_user$project$Main$Model,
-			config,
 			'',
 			'',
 			_user$project$Main$initSeed(config)),
@@ -9215,7 +9214,7 @@ var _user$project$Main$view = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Redact again'),
+					_0: _elm_lang$html$Html$text('Redact differently'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -9229,7 +9228,7 @@ var _user$project$Main$view = function (model) {
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('Redact more'),
+						_0: _elm_lang$html$Html$text('Redact more heavily'),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -9253,7 +9252,7 @@ var _user$project$Main$view = function (model) {
 										_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$Input),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$value(model.currentInput),
+											_0: _elm_lang$html$Html_Attributes$value(model.input),
 											_1: {ctor: '[]'}
 										}
 									}
