@@ -1,9 +1,6 @@
---import Debug
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
---import Keyboard
-import Char exposing (fromCode)
 import Random exposing (Generator(..), Seed, float, initialSeed, step)
 import Tuple exposing (second)
 
@@ -12,7 +9,7 @@ main =
     { init = init
     , view = view
     , update = update
-    , subscriptions = subscriptions
+    , subscriptions = always Sub.none
     }
 
 type alias Config =
@@ -32,10 +29,6 @@ type Msg
   = Input String
   | Reshuffle
   | More
-
-subscriptions : Model -> Sub Msg
-subscriptions _ = Sub.batch []
---  Sub.batch [ Keyboard.downs KeyDown ]
 
 init : Config -> (Model, Cmd Msg)
 init config =
