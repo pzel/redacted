@@ -1,7 +1,7 @@
 .PHONY: run publish
 R := git@github.com:pzel/redacted.git
 
-run:
+run: build
 	-pkill -f SimpleHTTPServer; sleep 1;
 	python -m SimpleHTTPServer 9999 &
 	while inotifywait -q -e modify *.elm index.html; do \
