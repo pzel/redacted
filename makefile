@@ -19,6 +19,7 @@ launchpad:
 publish: build launchpad
 	cp index.html main.js launchpad
 	(cd launchpad &&\
-	git add -A && git commit --allow-empty -m "Update $$(date +%Y%m%d%H%M%S)" &&\
-	git push -f origin gh-pages)
+	git add -A &&\
+	 git commit --allow-empty -m "Update $$(date +%Y%m%d%H%M%S)" &&\
+	git push origin gh-pages)
 
