@@ -9176,10 +9176,9 @@ var _user$project$Main$initSeed = function (c) {
 		_1: _elm_lang$core$Random$initialSeed(c.seed)
 	};
 };
-var _user$project$Main$Config = F2(
-	function (a, b) {
-		return {host: a, seed: b};
-	});
+var _user$project$Main$Config = function (a) {
+	return {seed: a};
+};
 var _user$project$Main$Model = F4(
 	function (a, b, c, d) {
 		return {config: a, currentInput: b, output: c, rng: d};
@@ -9291,16 +9290,11 @@ var _user$project$Main$main = _elm_lang$html$Html$programWithFlags(
 	})(
 	A2(
 		_elm_lang$core$Json_Decode$andThen,
-		function (host) {
-			return A2(
-				_elm_lang$core$Json_Decode$andThen,
-				function (seed) {
-					return _elm_lang$core$Json_Decode$succeed(
-						{host: host, seed: seed});
-				},
-				A2(_elm_lang$core$Json_Decode$field, 'seed', _elm_lang$core$Json_Decode$int));
+		function (seed) {
+			return _elm_lang$core$Json_Decode$succeed(
+				{seed: seed});
 		},
-		A2(_elm_lang$core$Json_Decode$field, 'host', _elm_lang$core$Json_Decode$string)));
+		A2(_elm_lang$core$Json_Decode$field, 'seed', _elm_lang$core$Json_Decode$int)));
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
