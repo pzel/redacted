@@ -13,7 +13,7 @@ main =
     }
 
 type alias Config =
-  { host : String, seed : Int }
+  { seed : Int }
 
 type alias RNG =
   (Generator Float, Seed)
