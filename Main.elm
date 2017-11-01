@@ -39,19 +39,20 @@ initSeed c =
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  case msg of
-    Input s ->
-      {model
-        | input = s
-        , output = redact s model.rng} ! []
-    Reshuffle ->
-      {model
-        | output = redact model.input (newRng model.rng)
-        , rng = (newRng model.rng)} ! []
-    More ->
-      {model
-        | output = redact model.output (newRng model.rng)
-        , rng = (newRng model.rng)} ! []
+  let nextRng = newRng model.rng
+  in case msg of
+       Input s ->
+         {model
+           | input = s
+           , output = redact s model.rng} ! []
+       Reshuffle ->
+         {model
+           | output = redact model.input nextRng
+           , rng = nextRng} ! []
+       More ->
+         {model
+           | output = redact model.output nextRng
+           , rng = nextRng } ! []
 
 view : Model -> Html Msg
 view model =
