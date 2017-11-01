@@ -19,8 +19,7 @@ type alias RNG =
   (Generator Float, Seed)
 
 type alias Model =
-  { config : Config
-  , currentInput : String
+  { input : String
   , output : String
   , rng : RNG
   }
@@ -32,7 +31,7 @@ type Msg
 
 init : Config -> (Model, Cmd Msg)
 init config =
-  (Model config "" "" (initSeed config), Cmd.none)
+  (Model "" "" (initSeed config), Cmd.none)
 
 initSeed : Config -> RNG
 initSeed c =
@@ -43,11 +42,11 @@ update msg model =
   case msg of
     Input s ->
       {model
-        | currentInput = s
+        | input = s
         , output = redact s model.rng} ! []
     Reshuffle ->
       {model
-        | output = redact model.currentInput (newRng model.rng)
+        | output = redact model.input (newRng model.rng)
         , rng = (newRng model.rng)} ! []
     More ->
       {model
@@ -57,13 +56,13 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div [] [
-     button [onClick Reshuffle] [ text "Redact again" ]
-    , button [onClick More] [ text "Redact more" ]
+     button [onClick Reshuffle] [ text "Redact differently" ]
+    , button [onClick More] [ text "Redact more heavily" ]
     , div [] []
     , textarea [id "main-input"
                , autofocus True
                , onInput Input
-               , value model.currentInput] []
+               , value model.input] []
     , div [id "main-output"] [text model.output]
     ]
 
