@@ -9128,6 +9128,7 @@ var _user$project$Main$redact = F2(
 	});
 var _user$project$Main$update = F2(
 	function (msg, model) {
+		var nextRng = _user$project$Main$newRng(model.rng);
 		var _p12 = msg;
 		switch (_p12.ctor) {
 			case 'Input':
@@ -9147,11 +9148,8 @@ var _user$project$Main$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							output: A2(
-								_user$project$Main$redact,
-								model.input,
-								_user$project$Main$newRng(model.rng)),
-							rng: _user$project$Main$newRng(model.rng)
+							output: A2(_user$project$Main$redact, model.input, nextRng),
+							rng: nextRng
 						}),
 					{ctor: '[]'});
 			default:
@@ -9160,11 +9158,8 @@ var _user$project$Main$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							output: A2(
-								_user$project$Main$redact,
-								model.output,
-								_user$project$Main$newRng(model.rng)),
-							rng: _user$project$Main$newRng(model.rng)
+							output: A2(_user$project$Main$redact, model.output, nextRng),
+							rng: nextRng
 						}),
 					{ctor: '[]'});
 		}
