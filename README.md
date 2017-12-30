@@ -1,5 +1,6 @@
 # redacted
 A toy for making 'redacted' text.
+[See it in action here](https://pzel.github.io/redacted/).
 
 ## Running
 
